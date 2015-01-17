@@ -5,6 +5,9 @@
  */
 package game;
 
+import laurikinnunen.javatetris.gameLogic.Board;
+import ui.UI;
+
 /**
  *
  * @author laurikin
@@ -12,7 +15,9 @@ package game;
 public class Main {
     
     public static void main(String[] args) {
-        Game game = new Game();
+        Board board = new Board(10,20);
+        UI ui = new UI(board);
+        Game game = new Game(ui, board);
         game.start();
     }
 }

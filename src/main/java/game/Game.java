@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package game;
 import java.util.Timer;
+import laurikinnunen.javatetris.gameLogic.Board;
+import ui.UI;
 
 /**
  *
@@ -14,6 +17,12 @@ public class Game {
 
     private Timer timer;
     private boolean isRunning;
+    private final UI ui;
+    private Board board;
+
+    public Game(UI ui, Board board) {
+        this.ui = ui;
+    }
     
     public void start() {
         isRunning = true;
@@ -26,10 +35,10 @@ public class Game {
         @Override
         public void run() //this becomes the loop
         {
-            if (!isRunning)
-            {
+            if (!isRunning) {
                 timer.cancel();
             }
+            ui.render(board);
         }
     }
 }
