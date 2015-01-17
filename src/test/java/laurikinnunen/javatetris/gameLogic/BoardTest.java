@@ -28,5 +28,12 @@ public class BoardTest {
         Board b2 = b.fill(2,3);
         assertFalse(b.isFilled(1,1));
     }
+
+    @Test
+    public void constructorIniniatesABoardWithGivenDimensions() {
+        Board b = new Board(8,4);
+        assertEquals(8, b.width());
+        assertEquals(4, b.height());
+    }
     
 }

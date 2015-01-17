@@ -14,7 +14,7 @@ public class Board {
     private final int height;
     private final Row[] rows;
 
-    Board(int width, int height) {
+    public Board(int width, int height) {
         this.width = width;
         this.height = height;
         this.rows = createRows();
@@ -34,6 +34,14 @@ public class Board {
             newRows[i] = new Row(width);
         }
         return newRows;
+    }
+
+    Object width() {
+        return width;
+    }
+
+    Object height() {
+        return height;
     }
     
 }
