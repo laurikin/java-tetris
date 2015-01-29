@@ -6,8 +6,9 @@
 Mitä useamman rivin saa kerrallaan katoamaan, sitä enemmän pisteitä suhteellisesti tulee. Pisteiden keruun kannalta kannattavampaa onkin hävittää kerralla neljä riviä.
 
 **Pelaajan toiminnot:** Pelaaja ohjaa tetriminoa nuolinäppäimillä.  Toimminnot ovat:
-| painike     | toiminto |
-|-------------|:---------|
-| vasen nuoli | liikuta vasemmalle |
-| oikea nuoli | liikuta oikealle |
-| ylänuoli | pyöritä |
+
+ painike     | toiminto
+:-------------|:---------
+vasen nuoli | liikuta vasemmalle
+oikea nuoli | liikuta oikealle
+ylänuoli | pyöritä 
