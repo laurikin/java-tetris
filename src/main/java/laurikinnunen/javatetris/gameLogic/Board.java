@@ -5,6 +5,8 @@
  */
 package laurikinnunen.javatetris.gameLogic;
 
+import java.util.Arrays;
+
 /**
  *
  * @author laurikin
@@ -20,8 +22,17 @@ public class Board {
         this.rows = createRows();
     }
 
+    private Board(Row[] rows, int width, int height) {
+        this.rows = rows;
+        this.width = width;
+        this.height = height;
+    }
+
     public Board fill(int x, int y) {
-        return this;
+        Row newRow = this.rows[y].add(new int[] {x});
+        Row[] newRows = Arrays.copyOf(rows, rows.length);
+        newRows[y] = newRow;
+        return new Board(newRows, width, height);
     }
 
     public boolean isFilled(int x, int y) {
@@ -36,11 +47,11 @@ public class Board {
         return newRows;
     }
 
-    Object width() {
+    public int width() {
         return width;
     }
 
-    Object height() {
+    public int height() {
         return height;
     }
     

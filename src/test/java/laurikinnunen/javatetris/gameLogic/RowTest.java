@@ -33,11 +33,13 @@ public class RowTest {
 
     @Test 
     public void addReturnsARowWithGivenIndecesTurnedTrue() {
-        Row r = new Row(3);
-        Row r2 = r.add(new int[] {0, 2});
+        Row r = new Row(5);
+        Row r2 = r.add(new int[] {0, 2}).add(new int[] {2, 4});
         assertTrue(r2.get(0));
         assertFalse(r2.get(1));
         assertTrue(r2.get(2));
+        assertFalse(r2.get(3));
+        assertTrue(r2.get(4));
     }
     
 }

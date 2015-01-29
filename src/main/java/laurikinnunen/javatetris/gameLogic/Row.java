@@ -5,6 +5,8 @@
  */
 package laurikinnunen.javatetris.gameLogic;
 
+import java.util.Arrays;
+
 /**
  *
  * @author laurikin
@@ -25,7 +27,7 @@ public class Row {
     }
 
     public Row add(int[] inds) {
-        boolean[] newBlocks = new boolean[blocks.length];
+        boolean[] newBlocks = Arrays.copyOf(blocks, blocks.length);
         for (int i = 0; i < inds.length; i++) {
             newBlocks[inds[i]] = true;
         }
