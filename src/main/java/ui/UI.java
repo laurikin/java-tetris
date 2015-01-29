@@ -7,7 +7,7 @@ package ui;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import laurikinnunen.javatetris.gameLogic.Board;
+import laurikinnunen.javatetris.gameLogic.GameState;
 
 /**
  *
@@ -18,22 +18,22 @@ public class UI {
     private JFrame jFrame;
     private final BoardView boardView;
 
-    public UI (Board board) {
+    public UI () {
 
-        boardView = new BoardView(board);
+        boardView = new BoardView();
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 JFrame frame = new MainFrame(boardView);
-                frame.setSize(500, 400);
+                frame.setSize(350, 700);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
         });
     }
 
-    public void render (Board board) {
-        boardView.render(board);
+    public void render (GameState gs) {
+        boardView.render(gs);
     }
 }

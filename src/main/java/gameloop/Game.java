@@ -6,7 +6,7 @@
 
 package gameloop;
 import java.util.Timer;
-import laurikinnunen.javatetris.gameLogic.Board;
+import laurikinnunen.javatetris.gameLogic.GameState;
 import ui.UI;
 
 /**
@@ -18,10 +18,11 @@ public class Game {
     private Timer timer;
     private boolean isRunning;
     private final UI ui;
-    private Board board;
+    private GameState gs;
 
-    public Game(UI ui, Board board) {
+    public Game(UI ui, GameState initialState) {
         this.ui = ui;
+        this.gs = initialState;
     }
     
     public void start() {
@@ -38,7 +39,9 @@ public class Game {
             if (!isRunning) {
                 timer.cancel();
             }
-            ui.render(board);
+            // get events from queue
+            // process events
+            ui.render(gs);
         }
     }
 }
