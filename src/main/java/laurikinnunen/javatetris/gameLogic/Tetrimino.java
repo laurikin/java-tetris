@@ -31,7 +31,7 @@ public class Tetrimino implements IMoveable<Tetrimino> {
 
     @Override
     public Tetrimino moveDown() {
-        return move(0, -1);
+        return move(0, 1);
     }
 
     @Override

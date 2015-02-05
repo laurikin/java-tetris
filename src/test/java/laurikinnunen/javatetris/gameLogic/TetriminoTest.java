@@ -37,11 +37,11 @@ public class TetriminoTest {
         Tetrimino t2 = t.moveDown();
         Block[] blocks = t2.blocks();
         assertEquals(3, blocks[0].x());
-        assertEquals(1, blocks[0].y());
+        assertEquals(3, blocks[0].y());
         assertEquals(2, blocks[1].x());
-        assertEquals(4, blocks[1].y());
+        assertEquals(6, blocks[1].y());
         assertEquals(4, blocks[2].x());
-        assertEquals(2, blocks[2].y());
+        assertEquals(4, blocks[2].y());
         assertEquals(3, blocks.length);
     }
 
