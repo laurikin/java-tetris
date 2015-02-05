@@ -5,6 +5,7 @@
  */
 package gameloop;
 
+import laurikinnunen.javatetris.gameLogic.Game;
 import laurikinnunen.javatetris.gameLogic.Board;
 import laurikinnunen.javatetris.gameLogic.Block;
 import laurikinnunen.javatetris.gameLogic.EventQueue;
@@ -34,8 +35,8 @@ public class Main {
 
         UI ui = new UI(eq);
         
-        Game gameLoop = new Game(ui, initialState, eq);
-        GameLoop game = new GameLoop(gameLoop);
+        Game gameLoop = new Game(initialState, eq);
+        GameLoop game = new GameLoop(gameLoop, ui);
         game.start();
     }
 }

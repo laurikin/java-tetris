@@ -3,12 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gameloop;
-
-import laurikinnunen.javatetris.gameLogic.EventQueue;
-import laurikinnunen.javatetris.gameLogic.GameState;
-import laurikinnunen.javatetris.gameLogic.IAction;
-import ui.UI;
+package laurikinnunen.javatetris.gameLogic;
 
 /**
  *
@@ -16,26 +11,24 @@ import ui.UI;
  */
 public class Game {
 
-    private final UI ui;
     private final EventQueue eq;
     private GameState gs;
 
-    public Game(UI ui, GameState gs, EventQueue eq) {
-        this.ui = ui;
+    public Game(GameState gs, EventQueue eq) {
         this.gs = gs;
         this.eq = eq;
     }
 
-    public void advance()
+    public GameState advance()
     {
-        processActions();
-        ui.render(gs);
+        return processActions();
     }
 
-    private void processActions() {
+    private GameState processActions() {
         IAction a;
         while ((a = eq.deque()) != null) {
             gs = a.run(gs);
         }
+        return gs;
     }
 }
