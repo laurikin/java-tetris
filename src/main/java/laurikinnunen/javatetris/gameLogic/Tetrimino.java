@@ -36,12 +36,12 @@ public class Tetrimino implements IMoveable<Tetrimino> {
 
     @Override
     public Tetrimino moveLeft() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return move(-1, 0);
     }
 
     @Override
     public Tetrimino moveRight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return move(1, 0);
     }
 
     @Override

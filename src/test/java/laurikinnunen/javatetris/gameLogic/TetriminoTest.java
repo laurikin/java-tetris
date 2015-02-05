@@ -45,4 +45,29 @@ public class TetriminoTest {
         assertEquals(3, blocks.length);
     }
 
+    @Test
+    public void moveLeftReturnsTetriminoWithAllBlocksOneLeft() {
+        Tetrimino t2 = t.moveLeft();
+        Block[] blocks = t2.blocks();
+        assertEquals(2, blocks[0].x());
+        assertEquals(2, blocks[0].y());
+        assertEquals(1, blocks[1].x());
+        assertEquals(5, blocks[1].y());
+        assertEquals(3, blocks[2].x());
+        assertEquals(3, blocks[2].y());
+        assertEquals(3, blocks.length);
+    }
+
+    @Test
+    public void moveRightReturnsTetriminoWithAllBlocksOneRight() {
+        Tetrimino t2 = t.moveRight();
+        Block[] blocks = t2.blocks();
+        assertEquals(4, blocks[0].x());
+        assertEquals(2, blocks[0].y());
+        assertEquals(3, blocks[1].x());
+        assertEquals(5, blocks[1].y());
+        assertEquals(5, blocks[2].x());
+        assertEquals(3, blocks[2].y());
+        assertEquals(3, blocks.length);
+    }
 }
