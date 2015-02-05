@@ -8,6 +8,7 @@ package ui;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import laurikinnunen.javatetris.gameLogic.EventQueue;
 import laurikinnunen.javatetris.gameLogic.GameState;
 
 /**
@@ -20,10 +21,10 @@ public class UI {
     private final BoardView boardView;
     private final KeyListener keyListener;
 
-    public UI () {
+    public UI (EventQueue eq) {
 
         boardView = new BoardView();
-        keyListener = new ArrowKeyListener();
+        keyListener = new ArrowKeyListener(eq);
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override

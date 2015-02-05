@@ -7,6 +7,7 @@ package gameloop;
 
 import laurikinnunen.javatetris.gameLogic.Board;
 import laurikinnunen.javatetris.gameLogic.Block;
+import laurikinnunen.javatetris.gameLogic.EventQueue;
 import laurikinnunen.javatetris.gameLogic.GameState;
 import laurikinnunen.javatetris.gameLogic.Tetrimino;
 import ui.UI;
@@ -29,10 +30,11 @@ public class Main {
             new Block(5,3)
         });
         GameState initialState = new GameState(board, tetrimino);
+        EventQueue eq = new EventQueue();
 
-        UI ui = new UI();
+        UI ui = new UI(eq);
 
-        Game game = new Game(ui, initialState);
+        Game game = new Game(ui, initialState, eq);
         game.start();
     }
 }

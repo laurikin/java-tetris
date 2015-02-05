@@ -7,6 +7,8 @@ package ui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import laurikinnunen.javatetris.gameLogic.EventQueue;
+import laurikinnunen.javatetris.gameLogic.MoveDownAction;
 
 /**
  *
@@ -14,6 +16,12 @@ import java.awt.event.KeyListener;
  */
 
 public class ArrowKeyListener implements KeyListener {
+
+    private final EventQueue eq;
+
+    public ArrowKeyListener (EventQueue eq) {
+        this.eq = eq;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -23,16 +31,13 @@ public class ArrowKeyListener implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case 37:
-                System.out.println("pressed left");
                 break;
             case 38:
-                System.out.println("pressed up");
                 break;
             case 39:
-                System.out.println("pressed right");
                 break;
             case 40:
-                System.out.println("pressed down");
+                this.eq.queue(new MoveDownAction());
                 break;
         }
 

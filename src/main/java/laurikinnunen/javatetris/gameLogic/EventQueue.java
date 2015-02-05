@@ -19,11 +19,11 @@ public class EventQueue {
         deque = new ArrayDeque();
     }
 
-    void queue(IAction action) {
+    public void queue(IAction action) {
         deque.add(action);
     }
 
-    IAction deque() {
+    public IAction deque() {
         return deque.poll();
     }
     
