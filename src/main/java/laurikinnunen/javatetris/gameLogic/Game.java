@@ -41,7 +41,10 @@ public class Game {
     private GameState processActions() {
         IAction a;
         while ((a = eq.deque()) != null) {
-            gs = a.run(gs);
+            GameState newGs = a.run(gs);
+            if (newGs.isValid()) {
+                gs = newGs;
+            }
         }
         return gs;
     }

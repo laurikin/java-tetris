@@ -19,11 +19,32 @@ public class GameState {
         this.tetrimino = tetrimino;
     }
 
+    public boolean isValid() {
+        for (Block block : tetrimino.blocks()) {
+            if (isOutOfBounds(block) || board.isFilled(block.x(), block.y())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public Board getBoard() {
         return this.board;
     }
 
     public Tetrimino getTetrimino() {
         return this.tetrimino;
+    }
+
+    private boolean isOutOfBounds(Block block) {
+        if (block.y() >= board.height()) {
+            return true;
+        } else if (block.x() < 0) {
+            return true;
+        } else if (block.x() >= board.width()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
