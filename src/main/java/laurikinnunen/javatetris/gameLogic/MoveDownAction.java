@@ -11,6 +11,11 @@ package laurikinnunen.javatetris.gameLogic;
  */
 public class MoveDownAction implements IAction {
 
+    /**
+     * Moves tetrimino down one step
+     * @param gs current game state
+     * @return updated game state
+     */
     @Override
     public GameState run(GameState gs) {
         return new GameState(gs.getBoard(), gs.getTetrimino().moveDown());

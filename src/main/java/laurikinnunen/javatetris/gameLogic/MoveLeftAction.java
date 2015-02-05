@@ -11,6 +11,11 @@ package laurikinnunen.javatetris.gameLogic;
  */
 public class MoveLeftAction implements IAction {
     
+    /**
+     * Moves tetrimino left one step
+     * @param gs current game state
+     * @return updated game state
+     */
     @Override
     public GameState run(GameState gs) {
         return new GameState(gs.getBoard(), gs.getTetrimino().moveLeft());

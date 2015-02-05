@@ -26,6 +26,11 @@ public class Row {
         return blocks[ind];
     }
 
+    /**
+     * Add blocks to a row
+     * @param inds places of new blocks counted from the left
+     * @return updated row
+     */
     public Row add(int[] inds) {
         boolean[] newBlocks = Arrays.copyOf(blocks, blocks.length);
         for (int i = 0; i < inds.length; i++) {

@@ -20,6 +20,12 @@ public class Game {
         this.eq = eq;
     }
 
+    /**
+     * Advances the game based on the given time interval
+     * @param currTime
+     * @param prevTime
+     * @return updated game state
+     */
     public GameState advance(long currTime, long prevTime)
     {
         if (nextTurn(currTime, prevTime)) {

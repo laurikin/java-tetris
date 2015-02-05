@@ -28,6 +28,12 @@ public class Board {
         this.height = height;
     }
 
+    /**
+     * fills the given coordinate with a block
+     * @param x
+     * @param y
+     * @return updated board
+     */
     public Board fill(int x, int y) {
         Row newRow = this.rows[y].add(new int[] {x});
         Row[] newRows = Arrays.copyOf(rows, rows.length);
@@ -35,16 +41,14 @@ public class Board {
         return new Board(newRows, width, height);
     }
 
+    /**
+     * Returns true if the given grid coordinate is occupied
+     * @param x
+     * @param y
+     * @return Boolean
+     */
     public boolean isFilled(int x, int y) {
         return this.rows[y].get(x);
-    }
-
-    private Row[] createRows() {
-        Row[] newRows = new Row[height];
-        for (int i = 0; i < newRows.length; i++) {
-            newRows[i] = new Row(width);
-        }
-        return newRows;
     }
 
     public int width() {
@@ -55,4 +59,11 @@ public class Board {
         return height;
     }
     
+    private Row[] createRows() {
+        Row[] newRows = new Row[height];
+        for (int i = 0; i < newRows.length; i++) {
+            newRows[i] = new Row(width);
+        }
+        return newRows;
+    }
 }
