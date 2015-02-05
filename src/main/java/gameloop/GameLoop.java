@@ -19,6 +19,8 @@ public class GameLoop {
     private boolean isRunning;
     private final Game game;
     private final UI ui;
+    private long runningTime;
+    private long startTime;
 
     public GameLoop(Game game, UI ui) {
         this.game = game;
@@ -26,9 +28,17 @@ public class GameLoop {
     }
     
     public void start() {
+        startTime = System.currentTimeMillis();
+        runningTime = 0;
         isRunning = true;
         timer = new Timer();
         timer.schedule(new Loop(), 0, 1000 / 60); //new timer at 60 fps, the timing mechanism
+    }
+
+    private void advanceGame() {    
+        long currTime = System.currentTimeMillis() - startTime; 
+        ui.render(game.advance(currTime, runningTime));
+        runningTime = currTime;
     }
 
     private class Loop extends java.util.TimerTask
@@ -39,9 +49,10 @@ public class GameLoop {
             if (!isRunning) {
                 timer.cancel();
             }
-            
-            ui.render(game.advance());
+
+            advanceGame();
 
         }
     }
+
 }

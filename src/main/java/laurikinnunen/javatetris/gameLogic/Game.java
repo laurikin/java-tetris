@@ -12,6 +12,7 @@ package laurikinnunen.javatetris.gameLogic;
 public class Game {
 
     private final EventQueue eq;
+    private final long turnLength = 1000;
     private GameState gs;
 
     public Game(GameState gs, EventQueue eq) {
@@ -19,8 +20,11 @@ public class Game {
         this.eq = eq;
     }
 
-    public GameState advance()
+    public GameState advance(long currTime, long prevTime)
     {
+        if (currTime % turnLength < prevTime % turnLength) {
+            makeTurn();
+        }
         return processActions();
     }
 
@@ -30,5 +34,9 @@ public class Game {
             gs = a.run(gs);
         }
         return gs;
+    }
+
+    private void makeTurn() {
+        eq.queue(new MoveDownAction());
     }
 }
