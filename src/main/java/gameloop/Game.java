@@ -14,7 +14,7 @@ import ui.UI;
  *
  * @author laurikin
  */
-public class Game implements Runnable{
+public class Game {
 
     private final UI ui;
     private final EventQueue eq;
@@ -26,8 +26,7 @@ public class Game implements Runnable{
         this.eq = eq;
     }
 
-    @Override
-    public void run()
+    public void advance()
     {
         processActions();
         ui.render(gs);

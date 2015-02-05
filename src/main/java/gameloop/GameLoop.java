@@ -19,10 +19,10 @@ public class GameLoop {
 
     private Timer timer;
     private boolean isRunning;
-    private final Runnable gameLoop;
+    private final Game game;
 
-    public GameLoop(Runnable gameLoop) {
-        this.gameLoop = gameLoop;
+    public GameLoop(Game game) {
+        this.game = game;
     }
     
     public void start() {
@@ -40,7 +40,7 @@ public class GameLoop {
                 timer.cancel();
             }
 
-            gameLoop.run();
+            game.advance();
 
         }
     }
