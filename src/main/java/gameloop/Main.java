@@ -33,8 +33,9 @@ public class Main {
         EventQueue eq = new EventQueue();
 
         UI ui = new UI(eq);
-
-        Game game = new Game(ui, initialState, eq);
+        
+        Game gameLoop = new Game(ui, initialState, eq);
+        GameLoop game = new GameLoop(gameLoop);
         game.start();
     }
 }
