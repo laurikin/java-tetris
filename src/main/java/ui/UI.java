@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import laurikinnunen.javatetris.gameLogic.GameState;
@@ -17,15 +18,18 @@ public class UI {
 
     private JFrame jFrame;
     private final BoardView boardView;
+    private final KeyListener keyListener;
 
     public UI () {
 
         boardView = new BoardView();
+        keyListener = new ArrowKeyListener();
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 JFrame frame = new MainFrame(boardView);
+                frame.addKeyListener(keyListener);
                 frame.setSize(350, 700);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
@@ -36,4 +40,5 @@ public class UI {
     public void render (GameState gs) {
         boardView.render(gs);
     }
+
 }
