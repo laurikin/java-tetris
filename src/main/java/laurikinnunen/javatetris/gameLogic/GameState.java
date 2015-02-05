@@ -21,11 +21,20 @@ public class GameState {
 
     public boolean isValid() {
         for (Block block : tetrimino.blocks()) {
-            if (isOutOfBounds(block) || board.isFilled(block.x(), block.y())) {
+            if (isOutOfBounds(block) || hasOverLap(block) ) {
                 return false;
             }
         }
         return true;
+    }
+
+    public boolean endOfFall() {
+        for (Block block : tetrimino.blocks()) {
+            if (touchesFloor(block)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Board getBoard() {
@@ -34,6 +43,10 @@ public class GameState {
 
     public Tetrimino getTetrimino() {
         return this.tetrimino;
+    }
+
+    private boolean hasOverLap(Block block) {
+        return board.isFilled(block.x(), block.y());
     }
 
     private boolean isOutOfBounds(Block block) {
@@ -46,5 +59,9 @@ public class GameState {
         } else {
             return false;
         }
+    }
+
+    private boolean touchesFloor(Block block) {
+        return block.y() == board.height() - 1;
     }
 }
