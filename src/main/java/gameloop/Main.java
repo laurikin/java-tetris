@@ -35,8 +35,8 @@ public class Main {
 
         UI ui = new UI(eq);
         
-        Game gameLoop = new Game(initialState, eq);
-        GameLoop game = new GameLoop(gameLoop, ui);
-        game.start();
+        Game game = new Game(initialState, eq);
+        GameLoop gameLoop = new GameLoop(game, ui);
+        gameLoop.start();
     }
 }
