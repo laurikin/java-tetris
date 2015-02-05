@@ -13,8 +13,8 @@ import static org.junit.Assert.*;
  *
  * @author laurikin
  */
-public class MoveDownActionTest {
-   
+public class MoveLeftActionTest {
+
     private GameState gs;
     
     @Before
@@ -25,13 +25,15 @@ public class MoveDownActionTest {
     }
 
     @Test
-    public void movesTetriminoOneDown() {
-        IAction a = new MoveDownAction();
+    public void movesTetriminoOneLeft() {
+        IAction a = new MoveLeftAction();
         GameState newGs = a.run(gs);
         Tetrimino newTetrimino = newGs.getTetrimino();
         Block[] newBlocks = newTetrimino.blocks();
-        assertEquals(1, newBlocks[0].x());
-        assertEquals(2, newBlocks[0].y());
+        assertEquals(0, newBlocks[0].x());
+        assertEquals(1, newBlocks[0].y());
+        assertEquals(1, newBlocks[1].x());
+        assertEquals(1, newBlocks[1].y());
     }
     
 }

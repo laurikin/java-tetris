@@ -9,6 +9,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import laurikinnunen.javatetris.gameLogic.EventQueue;
 import laurikinnunen.javatetris.gameLogic.MoveDownAction;
+import laurikinnunen.javatetris.gameLogic.MoveLeftAction;
+import laurikinnunen.javatetris.gameLogic.MoveRightAction;
 
 /**
  *
@@ -31,10 +33,12 @@ public class ArrowKeyListener implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case 37:
+                this.eq.queue(new MoveLeftAction());
                 break;
             case 38:
                 break;
             case 39:
+                this.eq.queue(new MoveRightAction());
                 break;
             case 40:
                 this.eq.queue(new MoveDownAction());
