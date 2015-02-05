@@ -21,12 +21,25 @@ public class ArrowKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+        switch (e.getKeyCode()) {
+            case 37:
+                System.out.println("pressed left");
+                break;
+            case 38:
+                System.out.println("pressed up");
+                break;
+            case 39:
+                System.out.println("pressed right");
+                break;
+            case 40:
+                System.out.println("pressed down");
+                break;
+        }
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
     }
 
 }
