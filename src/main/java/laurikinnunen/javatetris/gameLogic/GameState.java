@@ -6,7 +6,6 @@
 package laurikinnunen.javatetris.gameLogic;
 
 import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
-import laurikinnunen.javatetris.gameLogic.tetriminos.TetriminoFactory;
 
 /**
  *
@@ -30,6 +29,15 @@ public class GameState {
             }
         }
         return true;
+    }
+
+    public boolean isGameOver() {
+        for (int i = 0; i < board.width(); i++) {
+            if (board.isFilled(i,0)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean endOfFall() {

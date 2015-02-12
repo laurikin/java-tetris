@@ -15,11 +15,11 @@ public class SquareTetrimino extends Tetrimino {
 
     public SquareTetrimino() {
         super(new Block[] {
-            new Block(1,0),
-            new Block(2,0),
-            new Block(1,1),
-            new Block(2,1)
-        }, 2, 1);
+            new Block(4,-2),
+            new Block(5,-2),
+            new Block(4,-1),
+            new Block(5,-1)
+        }, 5, -2);
     }
     
 }

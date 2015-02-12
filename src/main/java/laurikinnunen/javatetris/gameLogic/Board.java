@@ -35,10 +35,14 @@ public class Board {
      * @return updated board
      */
     public Board fill(int x, int y) {
-        Row newRow = this.rows[y].add(new int[] {x});
-        Row[] newRows = Arrays.copyOf(rows, rows.length);
-        newRows[y] = newRow;
-        return new Board(newRows, width, height);
+        if (x < 0 || x >= width || y < 0 || y >= height) {
+            return this;
+        } else {
+            Row newRow = this.rows[y].add(new int[] {x});
+            Row[] newRows = Arrays.copyOf(rows, rows.length);
+            newRows[y] = newRow;
+            return new Board(newRows, width, height);
+        }
     }
 
     /**

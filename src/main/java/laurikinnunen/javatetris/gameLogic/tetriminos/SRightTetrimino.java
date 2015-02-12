@@ -15,11 +15,11 @@ public class SRightTetrimino extends Tetrimino {
 
     public SRightTetrimino() {
         super(new Block[] {
-            new Block(1,1),
-            new Block(2,1),
-            new Block(2,0),
-            new Block(3,0)
-        }, 2, 0);
+            new Block(4,-1),
+            new Block(5,-1),
+            new Block(5,-2),
+            new Block(6,-2)
+        }, 5, -2);
     }
     
 }

@@ -49,8 +49,13 @@ public class GameLoop {
             if (!isRunning) {
                 timer.cancel();
             }
-
-            advanceGame();
+            
+            if (game.isGameOver()) {
+                isRunning = false;
+                System.out.println("game over");
+            } else {
+                advanceGame();
+            }
 
         }
     }

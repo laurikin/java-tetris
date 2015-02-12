@@ -105,4 +105,22 @@ public class GameStateTest {
         
         assertTrue(endOfFallGs.endOfFall());
     }
+
+    @Test
+    public void isGameOverReturnsTrueIfABlockTouchesTheCeiling() {
+        GameState gameOverGs = new GameState(
+            board.fill(9, 19).fill(3, 0),
+            new Tetrimino(new Block[] { new Block(8,18), new Block(9,18) }, 0, 0));
+        
+        assertTrue(gameOverGs.isGameOver());
+    }
+
+    @Test
+    public void isGameOverReturnsFalseIfNoBlocksTouchTheCeiling() {
+        GameState gameOverGs = new GameState(
+            board.fill(9, 19),
+            new Tetrimino(new Block[] { new Block(8,18), new Block(9,18) }, 0, 0));
+        
+        assertFalse(gameOverGs.isGameOver());
+    }
 }

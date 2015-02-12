@@ -15,11 +15,11 @@ public class TTetrimino extends Tetrimino {
 
     public TTetrimino() {
         super(new Block[] {
-            new Block(1,1),
-            new Block(2,1),
-            new Block(3,1),
-            new Block(2,0)
-        }, 2, 0);
+            new Block(4,-2),
+            new Block(5,-2),
+            new Block(6,-2),
+            new Block(5,-1)
+        }, 5, -1);
     }
     
 }

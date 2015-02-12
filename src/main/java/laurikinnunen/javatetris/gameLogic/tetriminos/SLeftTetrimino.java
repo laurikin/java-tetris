@@ -15,11 +15,11 @@ public class SLeftTetrimino extends Tetrimino {
 
     public SLeftTetrimino() {
         super(new Block[] {
-            new Block(1,0),
-            new Block(2,0),
-            new Block(2,1),
-            new Block(3,1)
-        }, 2, 0);
+            new Block(4,-2),
+            new Block(5,-2),
+            new Block(5,-1),
+            new Block(6,-1)
+        }, 5, -2);
     }
     
 }

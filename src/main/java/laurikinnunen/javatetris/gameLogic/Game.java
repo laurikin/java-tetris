@@ -35,6 +35,10 @@ public class Game {
         return processActions();
     }
 
+    public boolean isGameOver() {
+        return gs.isGameOver();
+    }
+
     private boolean nextTurn (long currTime, long prevTime) {
         return currTime % TURN_LENGTH < prevTime % TURN_LENGTH;
     }
