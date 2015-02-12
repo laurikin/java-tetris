@@ -31,6 +31,7 @@ public class Game {
         if (nextTurn(currTime, prevTime)) {
             makeTurn();
         }
+
         return processActions();
     }
 
@@ -50,6 +51,10 @@ public class Game {
     }
 
     private void makeTurn() {
-        eq.queue(new MoveDownAction());
+        if (gs.endOfFall()) {
+            eq.queue(new NextTetriminoAction());
+        } else {
+            eq.queue(new MoveDownAction());
+        }
     }
 }

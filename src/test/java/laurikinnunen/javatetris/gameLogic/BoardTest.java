@@ -44,5 +44,36 @@ public class BoardTest {
         assertFalse(b.isFilled(1,1));
     }
 
+    @Test
+    public void dropFullRowsRemovesAllFullRows() {
+        Board b = new Board(2,5);
+        b = b.fill(0,4)
+                .fill(1,4)
+                .fill(0,3)
+                .fill(1,3)
+                .dropFullRows();
+
+        assertFalse(b.isFilled(0, 4));
+        assertFalse(b.isFilled(1, 4));
+        assertFalse(b.isFilled(0, 3));
+        assertFalse(b.isFilled(1, 3));
+    }
     
+    @Test
+    public void dropFullRowsMovesRowsAboveRemovedOnesDown() {
+        Board b = new Board(2,5);
+        b = b.fill(1,0)
+                .fill(1,1)
+                .fill(0,3)
+                .fill(1,3)
+                .fill(1,4)
+                .dropFullRows();
+
+        assertFalse(b.isFilled(1, 0));
+        assertTrue(b.isFilled(1, 1));
+        assertTrue(b.isFilled(1, 2));
+        assertFalse(b.isFilled(0, 3));
+        assertFalse(b.isFilled(1, 3));
+        assertTrue(b.isFilled(1, 4));
+    }
 }

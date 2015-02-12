@@ -58,6 +58,24 @@ public class Board {
     public int height() {
         return height;
     }
+
+    public Board dropFullRows() {
+        Row[] newRows = Arrays.copyOf(rows, rows.length);
+        for (int i = rows.length - 1; i >= 0; i--) {
+            while (newRows[i].isFull()) {
+                moveRowsAboveDown(i, newRows);
+            }
+        }
+        return new Board(newRows, this.width, this.height);
+    }
+
+    private Row[] moveRowsAboveDown(int n, Row[] rows) {
+        for (int i = n; i > 0; i--) {
+            rows[i] = rows[i - 1];
+        }
+        rows[0] = new Row(this.width);
+        return rows;
+    }
     
     private Row[] createRows() {
         Row[] newRows = new Row[height];

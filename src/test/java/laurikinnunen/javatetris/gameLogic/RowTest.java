@@ -41,5 +41,18 @@ public class RowTest {
         assertFalse(r2.get(3));
         assertTrue(r2.get(4));
     }
-    
+
+    @Test
+    public void isFullReturnsFalseIfRowContainsEmptySlots() {
+        Row r = new Row(5);
+        Row r2 = r.add(new int[] {0, 2, 4, 3});
+        assertFalse(r2.isFull());
+    }
+
+    @Test
+    public void isFullReturnsTrueIfRowDoesNotContainsEmptySlots() {
+        Row r = new Row(5);
+        Row r2 = r.add(new int[] {0, 1, 2, 3, 4});
+        assertTrue(r2.isFull());
+    }
 }

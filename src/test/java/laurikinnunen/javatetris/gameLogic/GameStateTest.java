@@ -73,7 +73,7 @@ public class GameStateTest {
     public void isEndOfFallReturnsTrueWhenTetriminoTouchesTheFloor() {
         GameState endOfFallGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(10,19), new Block(9,19) }));
+            new Tetrimino(new Block[] { new Block(9,19), new Block(9,19) }));
         
         assertTrue(endOfFallGs.endOfFall());
     }
@@ -82,8 +82,17 @@ public class GameStateTest {
     public void isEndOfFallReturnsFalseWhenTetriminoIsInMidAir() {
         GameState midAirGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(10,18), new Block(9,18) }));
+            new Tetrimino(new Block[] { new Block(9,18), new Block(9,18) }));
         
         assertFalse(midAirGs.endOfFall());
+    }
+
+    @Test
+    public void isEndOfFallReturnsTrueWhenThereIsABlockOneSquareBelow() {
+        GameState endOfFallGs = new GameState(
+            board.fill(9, 19),
+            new Tetrimino(new Block[] { new Block(8,18), new Block(9,18) }));
+        
+        assertTrue(endOfFallGs.endOfFall());
     }
 }

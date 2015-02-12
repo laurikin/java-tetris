@@ -22,7 +22,6 @@ public class Main {
     public static void main(String[] args) {
 
         Board board = new Board(10,20);
-        board = board.fill(0, 0).fill(9, 19).fill(4, 12);
 
         Tetrimino tetrimino = new Tetrimino(new Block[] { 
             new Block(4,4),

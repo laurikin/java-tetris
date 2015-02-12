@@ -38,4 +38,15 @@ public class Row {
         }
         return new Row(newBlocks);
     }
+
+    public boolean isFull() {
+        for (boolean block : blocks) {
+            if (!block) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    
 }
