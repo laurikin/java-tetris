@@ -17,7 +17,7 @@ public class TetriminoTest {
     private final Tetrimino t;
 
     public TetriminoTest() {
-        t = new Tetrimino(new Block[] {new Block(3,2), new Block(2,5), new Block(4,3)});
+        t = new Tetrimino(new Block[] {new Block(3,2), new Block(2,5), new Block(4,3)}, 3, 3);
     }
 
     @Test
@@ -42,6 +42,8 @@ public class TetriminoTest {
         assertEquals(6, blocks[1].y());
         assertEquals(4, blocks[2].x());
         assertEquals(4, blocks[2].y());
+        assertEquals(3, t2.center()[0]);
+        assertEquals(4, t2.center()[1]);
         assertEquals(3, blocks.length);
     }
 
@@ -55,6 +57,8 @@ public class TetriminoTest {
         assertEquals(5, blocks[1].y());
         assertEquals(3, blocks[2].x());
         assertEquals(3, blocks[2].y());
+        assertEquals(2, t2.center()[0]);
+        assertEquals(3, t2.center()[1]);
         assertEquals(3, blocks.length);
     }
 
@@ -68,6 +72,31 @@ public class TetriminoTest {
         assertEquals(5, blocks[1].y());
         assertEquals(5, blocks[2].x());
         assertEquals(3, blocks[2].y());
+        assertEquals(4, t2.center()[0]);
+        assertEquals(3, t2.center()[1]);
         assertEquals(3, blocks.length);
+    }
+
+    @Test
+    public void rotatesElementCounterClockwiseAroundItsAxis() {
+        Tetrimino tEl = new Tetrimino(new Block[] {
+            new Block(3,2),
+            new Block(4,2),
+            new Block(5,2),
+            new Block(4,1)
+        }, 4, 2);
+
+        Tetrimino t2 = tEl.rotate();
+        Block[] blocks = t2.blocks();
+
+        assertEquals(4, blocks[0].x());
+        assertEquals(3, blocks[0].y());
+        assertEquals(4, blocks[1].x());
+        assertEquals(2, blocks[1].y());
+        assertEquals(4, blocks[2].x());
+        assertEquals(1, blocks[2].y());
+        assertEquals(3, blocks[3].x());
+        assertEquals(2, blocks[3].y());
+        assertEquals(4, blocks.length);
     }
 }

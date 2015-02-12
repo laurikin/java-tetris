@@ -16,7 +16,7 @@ public class NextTetriminoActionTest {
     public void setUp() {
         gs = new GameState(
             new Board(10, 20),
-            new Tetrimino(new Block[] { new Block(8,19), new Block(9,19) }));
+            new Tetrimino(new Block[] { new Block(8,19), new Block(9,19) }, 0, 1));
     }
 
     @Test

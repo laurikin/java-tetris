@@ -28,7 +28,7 @@ public class GameStateTest {
     public void isValidReturnsTrueIfTetriminoIsWithinBounds() {
         GameState validGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(1,4), new Block(1,5) }));
+            new Tetrimino(new Block[] { new Block(1,4), new Block(1,5) }, 0, 0));
 
         assertTrue(validGs.isValid());
     }
@@ -37,7 +37,7 @@ public class GameStateTest {
     public void isValidReturnsFalseIfTetriminoOverlapsWithOtherBlocks() {
         GameState overLappingGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(1,4), new Block(2,4) }));
+            new Tetrimino(new Block[] { new Block(1,4), new Block(2,4) }, 0, 0));
 
         assertFalse(overLappingGs.isValid());
     }
@@ -46,7 +46,7 @@ public class GameStateTest {
     public void isValidReturnsFalseIfTetriminoIsBelowBoard() {
         GameState outOfBoundsGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(2,20), new Block(2,19) }));
+            new Tetrimino(new Block[] { new Block(2,20), new Block(2,19) }, 0, 0));
 
         assertFalse(outOfBoundsGs.isValid());
     }
@@ -55,7 +55,7 @@ public class GameStateTest {
     public void isValidReturnsFalseIfTetriminoIsToTheLeftOfBoard() {
         GameState outOfBoundsGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(-1,19), new Block(0,19) }));
+            new Tetrimino(new Block[] { new Block(-1,19), new Block(0,19) }, 0, 0));
 
         assertFalse(outOfBoundsGs.isValid());
     }
@@ -64,7 +64,7 @@ public class GameStateTest {
     public void isValidReturnsFalseIfTetriminoIsToTheRightOfBoard() {
         GameState outOfBoundsGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(10,19), new Block(9,19) }));
+            new Tetrimino(new Block[] { new Block(10,19), new Block(9,19) }, 0, 0));
 
         assertFalse(outOfBoundsGs.isValid());
     }
@@ -73,7 +73,7 @@ public class GameStateTest {
     public void isEndOfFallReturnsTrueWhenTetriminoTouchesTheFloor() {
         GameState endOfFallGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(9,19), new Block(9,19) }));
+            new Tetrimino(new Block[] { new Block(9,19), new Block(9,19) }, 0, 0));
         
         assertTrue(endOfFallGs.endOfFall());
     }
@@ -82,7 +82,7 @@ public class GameStateTest {
     public void isEndOfFallReturnsFalseWhenTetriminoIsInMidAir() {
         GameState midAirGs = new GameState(
             board,
-            new Tetrimino(new Block[] { new Block(9,18), new Block(9,18) }));
+            new Tetrimino(new Block[] { new Block(9,18), new Block(9,18) }, 0, 0));
         
         assertFalse(midAirGs.endOfFall());
     }
@@ -91,7 +91,7 @@ public class GameStateTest {
     public void isEndOfFallReturnsTrueWhenThereIsABlockOneSquareBelow() {
         GameState endOfFallGs = new GameState(
             board.fill(9, 19),
-            new Tetrimino(new Block[] { new Block(8,18), new Block(9,18) }));
+            new Tetrimino(new Block[] { new Block(8,18), new Block(9,18) }, 0, 0));
         
         assertTrue(endOfFallGs.endOfFall());
     }

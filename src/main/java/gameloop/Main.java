@@ -28,7 +28,7 @@ public class Main {
             new Block(5,4),
             new Block(6,4),
             new Block(5,3)
-        });
+        }, 5, 4);
         GameState initialState = new GameState(board, tetrimino);
         EventQueue eq = new EventQueue();
 

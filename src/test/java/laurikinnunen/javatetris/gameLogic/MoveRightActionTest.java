@@ -21,7 +21,7 @@ public class MoveRightActionTest {
     public void setUp() {
         gs = new GameState(
             new Board(10, 20),
-            new Tetrimino(new Block[] { new Block(1,1), new Block(2,1) }));
+            new Tetrimino(new Block[] { new Block(1,1), new Block(2,1) }, 0, 1));
     }
 
     @Test

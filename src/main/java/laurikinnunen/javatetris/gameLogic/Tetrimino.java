@@ -9,12 +9,14 @@ package laurikinnunen.javatetris.gameLogic;
  *
  * @author laurikin
  */
-public class Tetrimino implements IMoveable<Tetrimino> {
+public class Tetrimino {
 
     private final Block[] blocks;
-    
-    public Tetrimino(Block[] blocks) {
+    private final int[] center;
+
+    public Tetrimino(Block[] blocks, int centerX, int centerY) {
         this.blocks = blocks;
+        this.center = new int[] { centerX, centerY };
     }
 
     public Block[] blocks() {
@@ -24,28 +26,42 @@ public class Tetrimino implements IMoveable<Tetrimino> {
     private Tetrimino move(int dx, int dy) {
         Block[] newBlocks = new Block[blocks.length];
         for (int i = 0; i < blocks.length; i++) {
-            newBlocks[i] = new Block(blocks[i].x() + dx, blocks[i].y() + dy);        
+            newBlocks[i] = new Block(blocks[i].x() + dx, blocks[i].y() + dy);
         }
-        return new Tetrimino(newBlocks);
+        return new Tetrimino(newBlocks, center[0] + dx, center[1] + dy);
     }
 
-    @Override
     public Tetrimino moveDown() {
         return move(0, 1);
     }
 
-    @Override
     public Tetrimino moveLeft() {
         return move(-1, 0);
     }
 
-    @Override
     public Tetrimino moveRight() {
         return move(1, 0);
     }
 
-    @Override
     public Tetrimino moveRelative(int x, int y) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Tetrimino rotate() {
+        Block[] newBlocks = new Block[blocks.length];
+        for (int i = 0; i < blocks.length; i++) {
+            int dx = blocks[i].x() - center[0];
+            int dy = blocks[i].y() - center[1];
+            Block newBlock = new Block(
+                dy + center[0], 
+                -dx + center[1]
+            );
+            newBlocks[i] = newBlock;
+        }
+        return new Tetrimino(newBlocks, center[0], center[1]);
+    }
+
+    public int[] center() {
+        return center;
     }
 }
