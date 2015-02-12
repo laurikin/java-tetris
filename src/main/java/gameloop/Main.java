@@ -7,10 +7,16 @@ package gameloop;
 
 import laurikinnunen.javatetris.gameLogic.Game;
 import laurikinnunen.javatetris.gameLogic.Board;
-import laurikinnunen.javatetris.gameLogic.Block;
 import laurikinnunen.javatetris.gameLogic.EventQueue;
 import laurikinnunen.javatetris.gameLogic.GameState;
-import laurikinnunen.javatetris.gameLogic.Tetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.LLeftTetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.LRightTetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.SLeftTetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.SRightTetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.SquareTetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.TTetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.TetriminoFactory;
 import ui.UI;
 
 /**
@@ -22,14 +28,9 @@ public class Main {
     public static void main(String[] args) {
 
         Board board = new Board(10,20);
+        TetriminoFactory tFactory = new TetriminoFactory();
 
-        Tetrimino tetrimino = new Tetrimino(new Block[] { 
-            new Block(4,4),
-            new Block(5,4),
-            new Block(6,4),
-            new Block(5,3)
-        }, 5, 4);
-        GameState initialState = new GameState(board, tetrimino);
+        GameState initialState = new GameState(board, tFactory.getRandomTetrimino());
         EventQueue eq = new EventQueue();
 
         UI ui = new UI(eq);

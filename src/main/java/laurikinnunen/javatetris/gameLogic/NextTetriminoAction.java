@@ -5,6 +5,8 @@
  */
 package laurikinnunen.javatetris.gameLogic;
 
+import laurikinnunen.javatetris.gameLogic.tetriminos.TetriminoFactory;
+
 /**
  *
  * @author laurikin
@@ -13,7 +15,8 @@ public class NextTetriminoAction implements IAction {
 
     @Override
     public GameState run(GameState gs) {
-        return gs.nextTetrimino();
+        TetriminoFactory tFactory = new TetriminoFactory();
+        return gs.nextTetrimino(tFactory.getRandomTetrimino());
     }
     
 }

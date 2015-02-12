@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import laurikinnunen.javatetris.gameLogic.Block;
 import laurikinnunen.javatetris.gameLogic.Board;
 import laurikinnunen.javatetris.gameLogic.GameState;
-import laurikinnunen.javatetris.gameLogic.Tetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
 
 /**
  *

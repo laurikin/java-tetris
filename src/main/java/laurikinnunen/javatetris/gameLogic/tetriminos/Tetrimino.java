@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package laurikinnunen.javatetris.gameLogic;
+package laurikinnunen.javatetris.gameLogic.tetriminos;
+
+import laurikinnunen.javatetris.gameLogic.Block;
 
 /**
  *

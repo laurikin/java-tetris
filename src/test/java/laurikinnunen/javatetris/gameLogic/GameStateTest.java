@@ -5,6 +5,7 @@
  */
 package laurikinnunen.javatetris.gameLogic;
 
+import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;

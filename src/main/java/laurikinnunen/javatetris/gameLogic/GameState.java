@@ -5,6 +5,9 @@
  */
 package laurikinnunen.javatetris.gameLogic;
 
+import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
+import laurikinnunen.javatetris.gameLogic.tetriminos.TetriminoFactory;
+
 /**
  *
  * @author laurikin
@@ -46,15 +49,10 @@ public class GameState {
         return this.tetrimino;
     }
 
-    public GameState nextTetrimino() {
+    public GameState nextTetrimino(Tetrimino nextTetrimino) {
         Board newBoard = transferTetriminoToBoard();
         newBoard = newBoard.dropFullRows();
-        return new GameState(newBoard, new Tetrimino(new Block[] {
-            new Block(0,1),
-            new Block(1,1),
-            new Block(2,1),
-            new Block(1,0)
-        }, 1, 0));
+        return new GameState(newBoard, nextTetrimino);
     }
 
     public GameState rotateTetrimino() {
