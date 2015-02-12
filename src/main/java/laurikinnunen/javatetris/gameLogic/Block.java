@@ -9,7 +9,7 @@ package laurikinnunen.javatetris.gameLogic;
  *
  * @author laurikin
  */
-public class Block implements IMoveable<Block> {
+public class Block {
     private final int x;
     private final int y;
 
@@ -26,22 +26,18 @@ public class Block implements IMoveable<Block> {
         return y;
     }
 
-    @Override
     public Block moveDown() {
         return move(x,y-1);
     }
 
-    @Override
     public Block moveLeft() {
         return move(x-1,y);
     }
 
-    @Override
     public Block moveRight() {
         return move(x+1,y);
     }
 
-    @Override
     public Block moveRelative(int dx, int dy) {
         return move(x+dx, y+dy);
     }
