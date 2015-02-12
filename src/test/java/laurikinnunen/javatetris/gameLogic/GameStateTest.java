@@ -34,6 +34,15 @@ public class GameStateTest {
     }
 
     @Test
+    public void isValidReturnsTrueIfTetriminoIsAboveBoard() {
+        GameState validGs = new GameState(
+            board,
+            new Tetrimino(new Block[] { new Block(1,-1), new Block(1,0) }, 0, 0));
+
+        assertTrue(validGs.isValid());
+    }
+
+    @Test
     public void isValidReturnsFalseIfTetriminoOverlapsWithOtherBlocks() {
         GameState overLappingGs = new GameState(
             board,
