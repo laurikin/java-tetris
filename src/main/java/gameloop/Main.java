@@ -9,13 +9,6 @@ import laurikinnunen.javatetris.gameLogic.Game;
 import laurikinnunen.javatetris.gameLogic.Board;
 import laurikinnunen.javatetris.gameLogic.EventQueue;
 import laurikinnunen.javatetris.gameLogic.GameState;
-import laurikinnunen.javatetris.gameLogic.tetriminos.LLeftTetrimino;
-import laurikinnunen.javatetris.gameLogic.tetriminos.LRightTetrimino;
-import laurikinnunen.javatetris.gameLogic.tetriminos.SLeftTetrimino;
-import laurikinnunen.javatetris.gameLogic.tetriminos.SRightTetrimino;
-import laurikinnunen.javatetris.gameLogic.tetriminos.SquareTetrimino;
-import laurikinnunen.javatetris.gameLogic.tetriminos.TTetrimino;
-import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
 import laurikinnunen.javatetris.gameLogic.tetriminos.TetriminoFactory;
 import ui.UI;
 
