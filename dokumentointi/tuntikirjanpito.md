@@ -9,4 +9,5 @@
 | 5.2.2015      | 8             | lisatty perus näppäinkomennot sekä aikavälein tapahtuva liike|
 | 5.2.2015      | 1             | javadocs |
 | 12.2.2015     | 8             | ohjelmoitu pelilogiikka |
+| 13.2.2015     | 1             | sekvenssikaavio ja javadocs |
 
