@@ -16,6 +16,11 @@ public class Board {
     private final int height;
     private final Row[] rows;
 
+    /**
+     * Represents the game board
+     * @param width
+     * @param height
+     */
     public Board(int width, int height) {
         this.width = width;
         this.height = height;
@@ -67,6 +72,10 @@ public class Board {
         return height;
     }
 
+    /**
+     * destroy rows that are full and move rows above down
+     * @return updated board
+     */
     public Board dropFullRows() {
         Row[] newRows = Arrays.copyOf(rows, rows.length);
         for (int i = rows.length - 1; i >= 0; i--) {

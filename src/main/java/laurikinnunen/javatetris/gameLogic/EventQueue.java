@@ -8,16 +8,14 @@ package laurikinnunen.javatetris.gameLogic;
 import java.util.ArrayDeque;
 
 /**
- *
+ * A Queue to hold the various game actions
+ * coming from user input or timer
  * @author laurikin
  */
 public class EventQueue {
 
     private final ArrayDeque<IAction> deque;
 
-    /**
-     * Create new Queue to hold the various game actions
-     */
     public EventQueue () {
         deque = new ArrayDeque();
     }

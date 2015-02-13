@@ -6,15 +6,22 @@
 package laurikinnunen.javatetris.gameLogic;
 
 /**
- *
+ * 
  * @author laurikin
  */
+
 public class Game {
 
     private final EventQueue eq;
     private final long TURN_LENGTH = 1000;
     private GameState gs;
 
+    /**
+     * Takes actions from eventQueue and executes them on the gamestate
+     * Keeps track of the current gamestate
+     * @param gs
+     * @param eq
+     */
     public Game(GameState gs, EventQueue eq) {
         this.gs = gs;
         this.eq = eq;
@@ -35,6 +42,10 @@ public class Game {
         return processActions();
     }
 
+    /**
+     * returns true if game is over and should be stopped
+     * @return boolean
+     */
     public boolean isGameOver() {
         return gs.isGameOver();
     }

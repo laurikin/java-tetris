@@ -14,6 +14,10 @@ import java.util.Arrays;
 public class Row {
     private final boolean[] blocks;
 
+    /**
+     * Represents one row in the board
+     * @param length
+     */
     public Row(int length) {    
         this.blocks = new boolean[length];
     }
@@ -39,6 +43,10 @@ public class Row {
         return new Row(newBlocks);
     }
 
+    /**
+     * returns true if all slots in this row are occupied
+     * @return boolean
+     */
     public boolean isFull() {
         for (boolean block : blocks) {
             if (!block) {

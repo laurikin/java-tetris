@@ -6,7 +6,7 @@
 package laurikinnunen.javatetris.gameLogic;
 
 /**
- *
+ * represents a block in a tetrimino
  * @author laurikin
  */
 public class Block {
