@@ -13,7 +13,7 @@ package laurikinnunen.javatetris.gameLogic;
 public class Game {
 
     private final EventQueue eq;
-    private final long TURN_LENGTH = 1000;
+    private final int TURN_LENGTH = 700;
     private GameState gs;
 
     /**
@@ -55,7 +55,11 @@ public class Game {
     }
 
     private boolean nextTurn (long currTime, long prevTime) {
-        return currTime % TURN_LENGTH < prevTime % TURN_LENGTH;
+        return currTime % turnLength() < prevTime % turnLength();
+    }
+
+    private int turnLength() {
+        return TURN_LENGTH - (gs.getScore() + 1);
     }
 
     private GameState processActions() {
