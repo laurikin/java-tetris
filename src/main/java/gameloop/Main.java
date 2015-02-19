@@ -23,7 +23,11 @@ public class Main {
         Board board = new Board(10,20);
         TetriminoFactory tFactory = new TetriminoFactory();
 
-        GameState initialState = new GameState(board, tFactory.getRandomTetrimino());
+        GameState initialState = new GameState(
+                board, 
+                tFactory.getRandomTetrimino(),
+                tFactory.getRandomTetrimino());
+
         EventQueue eq = new EventQueue();
 
         UI ui = new UI(eq);

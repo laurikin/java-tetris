@@ -10,13 +10,13 @@ import javax.swing.JFrame;
  */
 public class MainFrame extends JFrame {
     
-    public MainFrame (BoardView boardView, ScoreView scoreView) {
+    public MainFrame (BoardView boardView, ScoreView scoreView, NextTetriminoView blockView) {
         super("Tetris");
-        
-        setLayout(new BorderLayout(0,0));
+        setLayout(new BorderLayout(10,10));
         
         Container c = getContentPane();
         
+        c.add(blockView, BorderLayout.LINE_START);
         c.add(boardView, BorderLayout.CENTER);
         c.add(scoreView, BorderLayout.LINE_END);
 

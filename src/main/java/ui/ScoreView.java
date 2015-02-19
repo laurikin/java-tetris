@@ -19,8 +19,8 @@ import javax.swing.UIManager;
 public class ScoreView extends JPanel {
 
     private int score = 0;
-    private final int WIDTH = 200;
-    private final int HEIGHT = 100;
+    private final int VIEW_WIDTH = 200;
+    private final int VIEW_HEIGHT = 100;
 
     public void render(int score) {
         this.score = score;
@@ -29,12 +29,12 @@ public class ScoreView extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(WIDTH, HEIGHT);
+        return new Dimension(VIEW_WIDTH, VIEW_HEIGHT);
     }
 
     @Override
     public void paintComponent(Graphics g) {
-        setBackground(Color.GRAY);
+        setBackground(Color.BLACK);
         Font font = UIManager.getFont("Label.font");
         setFont(font.deriveFont(Font.BOLD, 48));
 

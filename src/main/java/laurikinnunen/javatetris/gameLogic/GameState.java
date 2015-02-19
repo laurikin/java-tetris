@@ -17,17 +17,27 @@ public class GameState {
     private final int score;
     private final Board board;
     private final Tetrimino tetrimino;
+    private final Tetrimino nextTetrimino;
 
     public GameState(Board board, Tetrimino tetrimino) {
         this.score = 0;
         this.board = board;
         this.tetrimino = tetrimino;
+        this.nextTetrimino = tetrimino;
     }
 
-    private GameState(Board board, Tetrimino tetrimino, int score) {
+    public GameState(Board board, Tetrimino tetrimino, Tetrimino nextTetrimino) {
+        this.score = 0;
+        this.board = board;
+        this.tetrimino = tetrimino;
+        this.nextTetrimino = tetrimino;
+    }
+
+    private GameState(Board board, Tetrimino tetrimino, Tetrimino nextTetrimino, int score) {
         this.score = score;
         this.board = board;
         this.tetrimino = tetrimino;
+        this.nextTetrimino = nextTetrimino;
     }
 
     public boolean isValid() {
@@ -65,30 +75,38 @@ public class GameState {
         return this.tetrimino;
     }
 
+    public Tetrimino getNextTetrimino() {
+        return this.nextTetrimino;
+    }
+
     public int getScore() {
         return this.score;
     }
 
-    public GameState nextTetrimino(Tetrimino nextTetrimino) {
+    public GameState nextTetrimino(Tetrimino newTetrimino) {
         Board newBoard = transferTetriminoToBoard();
         DropUpdate update = newBoard.dropFullRows();
-        return new GameState(update.board(), nextTetrimino, incrementScore(update.droppedRows()));
+        return new GameState(update.board(), nextTetrimino, newTetrimino, incrementScore(update.droppedRows()));
     }
 
     public GameState rotateTetrimino() {
-        return new GameState(board, tetrimino.rotate(), score);
+        return moveTetrimino(tetrimino.rotate());
     }
 
     public GameState moveTetriminoDown() {
-        return new GameState(board, tetrimino.moveDown(), score);
+        return moveTetrimino(tetrimino.moveDown());
     }
 
     public GameState moveTetriminoLeft() {
-        return new GameState(board, tetrimino.moveLeft(), score);
+        return moveTetrimino(tetrimino.moveLeft());
     }
 
     public GameState moveTetriminoRight() {
-        return new GameState(board, tetrimino.moveRight(), score);
+        return moveTetrimino(tetrimino.moveRight());
+    }
+
+    private GameState moveTetrimino(Tetrimino newTetrimino) {
+        return new GameState(board, newTetrimino, nextTetrimino, score);
     }
 
     private int incrementScore(int droppedRows) {
