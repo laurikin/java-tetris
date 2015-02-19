@@ -5,7 +5,9 @@
  */
 package laurikinnunen.javatetris.gameLogic;
 
+import laurikinnunen.javatetris.gameLogic.tetriminos.BarTetrimino;
 import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -122,5 +124,71 @@ public class GameStateTest {
             new Tetrimino(new Block[] { new Block(8,18), new Block(9,18) }, 0, 0));
         
         assertFalse(gameOverGs.isGameOver());
+    }
+
+    @Test
+    public void nextTetriminoIncreasesScoreBy20WhenOneDestroyedRow() {
+        Board b = new Board(2,8);
+        GameState gs = new GameState(
+            b.fill(0, 7).fill(1, 7),
+            new BarTetrimino()
+        );
+        
+        gs = gs.nextTetrimino(new BarTetrimino());
+        assertEquals(20, gs.getScore());
+    }
+
+    @Test
+    public void nextTetriminoIncreasesScoreBy0WhenNoDestroyedRows() {
+        Board b = new Board(2,8);
+        GameState gs = new GameState(
+            b.fill(0, 7).fill(1, 8),
+            new BarTetrimino()
+        );
+        
+        gs = gs.nextTetrimino(new BarTetrimino());
+        assertEquals(0, gs.getScore());
+    }
+
+    @Test
+    public void nextTetriminoIncreasesScoreBy40WhenTwoDestroyedRows() {
+        Board b = new Board(2,8);
+        GameState gs = new GameState(
+            b.fill(0, 7).fill(1, 7)
+                .fill(0, 6).fill(1, 6),
+            new BarTetrimino()
+        );
+        
+        gs = gs.nextTetrimino(new BarTetrimino());
+        assertEquals(40, gs.getScore());
+    }
+
+    @Test
+    public void nextTetriminoIncreasesScoreBy80WhenThreeDestroyedRows() {
+        Board b = new Board(2,8);
+        GameState gs = new GameState(
+            b.fill(0, 7).fill(1, 7)
+                .fill(0, 6).fill(1, 6)
+                .fill(0, 5).fill(1, 5),
+            new BarTetrimino()
+        );
+        
+        gs = gs.nextTetrimino(new BarTetrimino());
+        assertEquals(80, gs.getScore());
+    }
+
+    @Test
+    public void nextTetriminoIncreasesScoreBy160WhenFourDestroyedRows() {
+        Board b = new Board(2,8);
+        GameState gs = new GameState(
+            b.fill(0, 7).fill(1, 7)
+                .fill(0, 6).fill(1, 6)
+                .fill(0, 5).fill(1, 5)
+                .fill(0, 4).fill(1, 4),
+            new BarTetrimino()
+        );
+        
+        gs = gs.nextTetrimino(new BarTetrimino());
+        assertEquals(160, gs.getScore());
     }
 }

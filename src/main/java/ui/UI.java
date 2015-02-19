@@ -19,27 +19,37 @@ public class UI {
 
     private JFrame jFrame;
     private final BoardView boardView;
+    private final ScoreView scoreView;
     private final KeyListener keyListener;
 
     public UI (EventQueue eq) {
 
         boardView = new BoardView();
+        scoreView = new ScoreView();
         keyListener = new ArrowKeyListener(eq);
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame frame = new MainFrame(boardView);
+                JFrame frame = new MainFrame(boardView, scoreView);
                 frame.addKeyListener(keyListener);
-                frame.setSize(350, 700);
+                frame.setSize(510, 620);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
         });
     }
 
-    public void render (GameState gs) {
-        boardView.render(gs);
+    public void render (GameState gs, GameState old) {
+        if(gs.getBoard() != old.getBoard() || 
+           gs.getTetrimino() != old.getTetrimino())
+        {
+            boardView.render(gs);
+        }
+
+        if (gs.getScore() != old.getScore()) {
+            scoreView.render(gs.getScore());
+        }
     }
 
 }

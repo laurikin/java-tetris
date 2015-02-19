@@ -5,6 +5,7 @@
  */
 package laurikinnunen.javatetris.gameLogic;
 
+import laurikinnunen.javatetris.gameLogic.Board.DropUpdate;
 import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
 
 /**
@@ -13,11 +14,18 @@ import laurikinnunen.javatetris.gameLogic.tetriminos.Tetrimino;
  */
 public class GameState {
 
-    private int score;
-    public Board board;
-    public Tetrimino tetrimino;
+    private final int score;
+    private final Board board;
+    private final Tetrimino tetrimino;
 
     public GameState(Board board, Tetrimino tetrimino) {
+        this.score = 0;
+        this.board = board;
+        this.tetrimino = tetrimino;
+    }
+
+    private GameState(Board board, Tetrimino tetrimino, int score) {
+        this.score = score;
         this.board = board;
         this.tetrimino = tetrimino;
     }
@@ -57,14 +65,38 @@ public class GameState {
         return this.tetrimino;
     }
 
+    public int getScore() {
+        return this.score;
+    }
+
     public GameState nextTetrimino(Tetrimino nextTetrimino) {
         Board newBoard = transferTetriminoToBoard();
-        newBoard = newBoard.dropFullRows();
-        return new GameState(newBoard, nextTetrimino);
+        DropUpdate update = newBoard.dropFullRows();
+        return new GameState(update.board(), nextTetrimino, incrementScore(update.droppedRows()));
     }
 
     public GameState rotateTetrimino() {
-        return new GameState(board, tetrimino.rotate());
+        return new GameState(board, tetrimino.rotate(), score);
+    }
+
+    public GameState moveTetriminoDown() {
+        return new GameState(board, tetrimino.moveDown(), score);
+    }
+
+    public GameState moveTetriminoLeft() {
+        return new GameState(board, tetrimino.moveLeft(), score);
+    }
+
+    public GameState moveTetriminoRight() {
+        return new GameState(board, tetrimino.moveRight(), score);
+    }
+
+    private int incrementScore(int droppedRows) {
+        if (droppedRows < 1) {
+            return score;
+        } else {
+            return score + 10 * (int)Math.pow(2, droppedRows);
+        }
     }
 
     private Board transferTetriminoToBoard() {

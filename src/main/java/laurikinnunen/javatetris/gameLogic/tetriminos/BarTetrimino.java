@@ -11,15 +11,15 @@ import laurikinnunen.javatetris.gameLogic.Block;
  *
  * @author laurikin
  */
-public class LRightTetrimino extends Tetrimino {
+public class BarTetrimino extends Tetrimino {
 
-    public LRightTetrimino() {
+    public BarTetrimino() {
         super(new Block[] {
             new Block(4,-1),
             new Block(5,-1),
             new Block(6,-1),
-            new Block(6,-2)
-        }, 5, -1);
+            new Block(7,-1)
+        }, 6, -1);
     }
-    
+
 }

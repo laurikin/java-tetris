@@ -18,6 +18,6 @@ public class MoveLeftAction implements IAction {
      */
     @Override
     public GameState run(GameState gs) {
-        return new GameState(gs.getBoard(), gs.getTetrimino().moveLeft());
+        return gs.moveTetriminoLeft();
     }
 }

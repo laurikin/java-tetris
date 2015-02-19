@@ -18,7 +18,7 @@ public class MoveDownAction implements IAction {
      */
     @Override
     public GameState run(GameState gs) {
-        return new GameState(gs.getBoard(), gs.getTetrimino().moveDown());
+        return gs.moveTetriminoDown();
     }
     
 }

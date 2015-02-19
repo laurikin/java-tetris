@@ -22,7 +22,8 @@ public class TetriminoFactory {
             new SLeftTetrimino(),
             new SRightTetrimino(),
             new SquareTetrimino(),
-            new TTetrimino()
+            new TTetrimino(),
+            new BarTetrimino()
         };
     }
 

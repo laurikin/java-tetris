@@ -58,7 +58,7 @@ public class BoardTest {
                 .fill(1,4)
                 .fill(0,3)
                 .fill(1,3)
-                .dropFullRows();
+                .dropFullRows().board();
 
         assertFalse(b.isFilled(0, 4));
         assertFalse(b.isFilled(1, 4));
@@ -74,7 +74,7 @@ public class BoardTest {
                 .fill(0,3)
                 .fill(1,3)
                 .fill(1,4)
-                .dropFullRows();
+                .dropFullRows().board();
 
         assertFalse(b.isFilled(1, 0));
         assertTrue(b.isFilled(1, 1));
@@ -82,5 +82,19 @@ public class BoardTest {
         assertFalse(b.isFilled(0, 3));
         assertFalse(b.isFilled(1, 3));
         assertTrue(b.isFilled(1, 4));
+    }
+
+    @Test
+    public void dropFullReturnsNumberOfRowsDropped() {
+        Board b = new Board(2,5);
+        int droppedRows = b.fill(1,0)
+                .fill(1,1)
+                .fill(0,3)
+                .fill(1,3)
+                .fill(0,4)
+                .fill(1,4)
+                .dropFullRows().droppedRows();
+
+        assertEquals(2, droppedRows);
     }
 }

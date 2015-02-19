@@ -7,6 +7,7 @@
 package gameloop;
 import laurikinnunen.javatetris.gameLogic.Game;
 import java.util.Timer;
+import laurikinnunen.javatetris.gameLogic.GameState;
 import ui.UI;
 
 /**
@@ -37,7 +38,8 @@ public class GameLoop {
 
     private void advanceGame() {    
         long currTime = System.currentTimeMillis() - startTime; 
-        ui.render(game.advance(currTime, runningTime));
+        GameState oldState = game.getState();
+        ui.render(game.advance(currTime, runningTime), oldState);
         runningTime = currTime;
     }
 

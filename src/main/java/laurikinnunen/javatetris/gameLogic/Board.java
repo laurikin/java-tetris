@@ -76,14 +76,16 @@ public class Board {
      * destroy rows that are full and move rows above down
      * @return updated board
      */
-    public Board dropFullRows() {
+    public DropUpdate dropFullRows() {
         Row[] newRows = Arrays.copyOf(rows, rows.length);
+        int droppedRows = 0;
         for (int i = rows.length - 1; i >= 0; i--) {
             while (newRows[i].isFull()) {
                 moveRowsAboveDown(i, newRows);
+                droppedRows++;
             }
         }
-        return new Board(newRows, this.width, this.height);
+        return new DropUpdate(new Board(newRows, this.width, this.height), droppedRows);
     }
 
     private Row[] moveRowsAboveDown(int n, Row[] rows) {
@@ -100,5 +102,23 @@ public class Board {
             newRows[i] = new Row(width);
         }
         return newRows;
+    }
+
+    public class DropUpdate {
+        private final Board board;
+        private final int numOfRowsDropped;
+
+        public DropUpdate(Board board, int n) {
+            this.board = board;
+            this.numOfRowsDropped = n;
+        }
+
+        public Board board() {
+            return board;
+        }
+
+        public int droppedRows() {
+            return numOfRowsDropped;
+        }
     }
 }

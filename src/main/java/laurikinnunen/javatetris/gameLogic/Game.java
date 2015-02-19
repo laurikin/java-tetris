@@ -50,6 +50,10 @@ public class Game {
         return gs.isGameOver();
     }
 
+    public GameState getState() {
+        return gs;
+    }
+
     private boolean nextTurn (long currTime, long prevTime) {
         return currTime % TURN_LENGTH < prevTime % TURN_LENGTH;
     }
