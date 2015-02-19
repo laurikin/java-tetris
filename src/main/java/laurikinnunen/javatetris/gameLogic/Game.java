@@ -46,9 +46,6 @@ public class Game {
      * returns true if game is over and should be stopped
      * @return boolean
      */
-    public boolean isGameOver() {
-        return gs.isGameOver();
-    }
 
     public GameState getState() {
         return gs;
@@ -74,7 +71,7 @@ public class Game {
     }
 
     private void makeTurn() {
-        if (gs.endOfFall()) {
+        if (gs.endOfFall() && !gs.isGameOver()) {
             eq.queue(new NextTetriminoAction());
         } else {
             eq.queue(new MoveDownAction());

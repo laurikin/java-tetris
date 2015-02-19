@@ -11,6 +11,7 @@ import laurikinnunen.javatetris.gameLogic.EventQueue;
 import laurikinnunen.javatetris.gameLogic.MoveDownAction;
 import laurikinnunen.javatetris.gameLogic.MoveLeftAction;
 import laurikinnunen.javatetris.gameLogic.MoveRightAction;
+import laurikinnunen.javatetris.gameLogic.NewGameAction;
 import laurikinnunen.javatetris.gameLogic.RotateAction;
 
 /**
@@ -44,6 +45,9 @@ public class ArrowKeyListener implements KeyListener {
                 break;
             case 40:
                 this.eq.queue(new MoveDownAction());
+                break;
+            case 32:
+                this.eq.queue(new NewGameAction());
                 break;
         }
 

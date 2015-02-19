@@ -2,8 +2,10 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import laurikinnunen.javatetris.gameLogic.Block;
 import laurikinnunen.javatetris.gameLogic.Board;
 import laurikinnunen.javatetris.gameLogic.GameState;
@@ -24,6 +26,9 @@ public class BoardView extends JPanel {
         renderBoard(g, gs.getBoard());
         renderTetrimino(g, gs.getTetrimino());
 
+        if (gs.isGameOver()) {
+            renderText(g);
+        }
     }
 
     public void render(GameState gs) {
@@ -61,6 +66,22 @@ public class BoardView extends JPanel {
                 BLOCK_SIZE,
                 BLOCK_SIZE);
         }
+    }
+
+    private void renderText(Graphics g) {
+        g.setColor(Color.GRAY);
+            g.fillRect(
+                40,
+                180, 
+                210,
+                60);
+
+        g.setColor(Color.WHITE);
+        Font font = UIManager.getFont("Label.font");
+        setFont(font.deriveFont(Font.BOLD, 24));
+        g.drawString("Game Over!",50,200);
+        setFont(font.deriveFont(Font.BOLD, 16));
+        g.drawString("Press space to restart",50,230);
     }
     
 }
