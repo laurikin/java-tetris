@@ -71,7 +71,7 @@ public class Game {
     }
 
     private void makeTurn() {
-        if (gs.endOfFall() && !gs.isGameOver()) {
+        if (!gs.isGameOver() && gs.endOfFall()) {
             eq.queue(new NextTetriminoAction());
         } else {
             eq.queue(new MoveDownAction());
