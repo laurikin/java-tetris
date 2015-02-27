@@ -40,6 +40,11 @@ public class GameState {
         this.nextTetrimino = nextTetrimino;
     }
 
+    /**
+     * returns true if this is a valid game state
+     * returns true if tetrimino overlaps with board blocks or is out of bounds
+     * @return
+     */
     public boolean isValid() {
         for (Block block : tetrimino.blocks()) {
             if (isOutOfBounds(block) || hasOverLap(block) ) {
@@ -49,6 +54,10 @@ public class GameState {
         return true;
     }
 
+    /**
+     * returns true if this is a game over state
+     * @return
+     */
     public boolean isGameOver() {
         for (int i = 0; i < board.width(); i++) {
             if (board.isFilled(i,0)) {
@@ -58,6 +67,10 @@ public class GameState {
         return false;
     }
 
+    /**
+     * returns true if tetrimino can not move down
+     * @return
+     */
     public boolean endOfFall() {
         for (Block block : tetrimino.blocks()) {
             if (touchesFloor(block) || cannotMoveDown(block)) {
@@ -83,6 +96,12 @@ public class GameState {
         return this.score;
     }
 
+    /**
+     * merges the current tetrimino to board, drops full rows from the board
+     * and adds points
+     * @param newTetrimino
+     * @return
+     */
     public GameState nextTetrimino(Tetrimino newTetrimino) {
         Board newBoard = transferTetriminoToBoard();
         DropUpdate update = newBoard.dropFullRows();

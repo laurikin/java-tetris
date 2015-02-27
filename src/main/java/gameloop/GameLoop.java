@@ -23,11 +23,19 @@ public class GameLoop {
     private long runningTime;
     private long startTime;
 
+    /**
+     * responsible for running the main loop
+     * @param game
+     * @param ui
+     */
     public GameLoop(Game game, UI ui) {
         this.game = game;
         this.ui = ui;
     }
     
+    /**
+     * start the loop
+     */
     public void start() {
         startTime = System.currentTimeMillis();
         runningTime = 0;

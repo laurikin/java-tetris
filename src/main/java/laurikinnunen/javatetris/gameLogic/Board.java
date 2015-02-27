@@ -104,6 +104,10 @@ public class Board {
         return newRows;
     }
 
+    /**
+     * Special purpose class, used to return the number of rows
+     * dropped after calling dropFullRows
+     */
     public class DropUpdate {
         private final Board board;
         private final int numOfRowsDropped;
