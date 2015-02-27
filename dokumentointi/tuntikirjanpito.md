@@ -1,4 +1,4 @@
-## Tuntikirjanpito
+#Tuntikirjanpito
 
 | päivämäärä    | tunnit        | tehtävät  |
 | ------------- |---------------| ----------|
@@ -12,3 +12,4 @@
 | 13.2.2015     | 1             | sekvenssikaavio ja javadocs |
 | 19.2.2015     | 4             | lisatty pisteet seka pari muuta oleellista ominaisuutta |
 | 20.2.2015     | 2             | sekvenssikaavioita |
+| 27.2.2015     | 1             | javadocs |
